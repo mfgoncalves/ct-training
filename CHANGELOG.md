@@ -119,7 +119,7 @@
 ### Minor Changes
 
 - [`4f7e081`](https://github.com/commercetools/merchant-center-application-kit/commit/4f7e081c001e285e8f4c7771894f5d09509daf8e) [#1948](https://github.com/commercetools/merchant-center-application-kit/pull/1948) Thanks [@emmenko](https://github.com/emmenko)! - Allow to pass the application routes as `children` of `<ApplicationShell>`, instead of using the `render` prop.
-  When doing so, the application entry point routes are automatically configured according to the `entryPointUriPath` defined in the `custom-application-config.json`.
+  When doing so, the application entry point routes are automatically configured according to the `entryPointUriPath` defined in the `custom-application-config.js`.
 
   > Note that it's still possible to use the `render` prop. However, for most of the cases it should suffice to rely on the pre-configured routes.
 
