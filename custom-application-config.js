@@ -9,7 +9,7 @@ const config = {
       initialProjectKey: 'mfgoncaves-test'
     },
     production: {
-      applicationId: 'cl2hsf06s16097701xwe4yxbjv9',
+      applicationId: '${env:APPLICATION_ID}',
       url: 'https://ct-training-mfgoncalves.vercel.app'
     }
   },
