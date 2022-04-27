@@ -1,10 +1,9 @@
 import { useShowApiErrorNotification } from '@commercetools-frontend/actions-global';
 import { FormModalPage } from '@commercetools-frontend/application-components';
 import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
-import LocalizedTextField from '@commercetools-uikit/localized-text-field';
+import LocalizedTextInput from '@commercetools-uikit/localized-text-input';
 import Spacings from '@commercetools-uikit/spacings';
 import { useFormik } from 'formik';
-import React from 'react';
 import { useShoppingListContext } from '../ShoppingLists';
 import { useShoppingListCreator, useShoppingListFetcher, useShoppingListUpdater } from '../use-shopping-list-connector';
 
@@ -88,7 +87,7 @@ const ShoppingListForm = () => {
       >
       <form onSubmit={formik.submitForm}>
         <Spacings.Stack>
-          <LocalizedTextField
+          <LocalizedTextInput
             title="Name"
             name="name"
             isRequired

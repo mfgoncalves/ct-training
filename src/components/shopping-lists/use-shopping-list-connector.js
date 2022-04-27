@@ -1,12 +1,10 @@
-import React from 'react';
-import {GRAPHQL_TARGETS} from '@commercetools-frontend/constants'
-import FetchShoppingLists from './fetch-shopping-lists.ctp.graphql'
-import DeleteShoppingList from './delete-shopping-list.ctp.graphql'
-import UpdateShoppingList from './update-shopping-list.ctp.graphql'
+import { useMutation, useQuery } from '@apollo/client'
+import { GRAPHQL_TARGETS } from '@commercetools-frontend/constants'
+import { shoppingListToForm } from './conversions'
 import CreateShoppingList from './create-shopping-list.ctp.graphql'
-import { useMutation, useQuery } from '@apollo/client';
-import { useApplicationContext } from '@commercetools-frontend/application-shell-connectors';
-import { shoppingListToForm } from '../../utils/conversions';
+import DeleteShoppingList from './delete-shopping-list.ctp.graphql'
+import FetchShoppingLists from './fetch-shopping-lists.ctp.graphql'
+import UpdateShoppingList from './update-shopping-list.ctp.graphql'
 
 export const useShoppingListFetcher = () => {
   const query = useQuery(FetchShoppingLists, {
