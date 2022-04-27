@@ -1,0 +1,6 @@
+mutation UpdateShoppingList($version: Long!, $id: String!, $actions: [ShoppingListUpdateAction!]!) {
+  updateShoppingList(version: $version, id: $id, actions: $actions){
+    id
+    version
+  }
+}

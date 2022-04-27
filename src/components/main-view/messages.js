@@ -1,0 +1,27 @@
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+  title: {
+    id: 'MainView.title',
+    description: 'The page title of main view',
+    defaultMessage: 'Hello, world',
+  },
+  
+  ShoppingListsLabelLink: {
+    id: 'MainView.ShoppingLists',
+    description: 'The label for the link to ShoppingLists',
+    defaultMessage: 'Shopping Lists',
+  },
+ 
+  ExternalServerLabelLink: {
+    id: 'MainView.ExternalServerLabelLink',
+    description: 'The label for the link to External Server',
+    defaultMessage: 'External Server',
+  },
+
+  HomePageLabelLink: {
+    id: 'MainView.HomePageLabelLink',
+    description: 'The label for the link to home page',
+    defaultMessage: 'Home Page'
+  }
+});

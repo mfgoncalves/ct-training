@@ -1,0 +1,61 @@
+import React, { useReducer, useEffect, useState } from "react";
+import Text from "@commercetools-uikit/text";
+import { actions, useAsyncDispatch } from "@commercetools-frontend/sdk";
+import { useShowApiErrorNotification } from "@commercetools-frontend/actions-global";
+import PrimaryButton from "@commercetools-uikit/primary-button";
+import { ContentNotification, Spacings } from "@commercetools-frontend/ui-kit";
+
+const externalApiUrl = "https://external-server.now.sh/sayhi";
+const initialState = {
+  isLoading: false,
+  data: null,
+  error: null,
+};
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
+    case "ok":
+      return { isLoading: false, data: action.payload, error: null };
+    case "error":
+      return { isLoading: false, data: null, error: action.payload };
+    default:
+      return state;
+  }
+};
+const ExternalServer = () => {
+  // The asyncDispatch is a wrapper around the redux dispatch and provides
+  // the correct return type definitions because the action resolves to a Promise.
+  const asyncDispatch = useAsyncDispatch();
+  const showApiErrorNotification = useShowApiErrorNotification();
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const handleCall = async () => {
+    try {
+      const result = await asyncDispatch(actions.forwardTo.get({
+        uri: externalApiUrl, 
+        headers: {
+          'X-Forward-To': externalApiUrl,
+          'Accept-version': 'v2',
+          'X-Project-Key': 'mfgoncaves-test'
+        }
+      }))
+      dispatch({type: 'ok', payload: result})
+    } catch(err){
+      dispatch({type: 'error', payload: err})
+    }
+  }
+
+  if(state.isLoading){
+    return <div>loading...</div>
+  }
+
+  if(state.error){
+    showApiErrorNotification({
+      errors: {message: state.error.message}
+    })
+    return <div>An error has ocurred: {state.error.message}</div>
+  }
+ 
+  return <button onClick={handleCall}>Say Hi!</button>
+};
+
+export default ExternalServer;
